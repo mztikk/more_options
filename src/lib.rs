@@ -26,4 +26,16 @@ mod tests {
         let input: Option<&str> = None;
         assert!(input.is_none_or(|x| x == &"test"));
     }
+
+    #[test]
+    fn is_none_or_should_return_false_on_different_value() {
+        let input = Some("test");
+        assert!(!input.is_none_or(|x| x == &"test2"));
+    }
+
+    #[test]
+    fn is_none_or_should_return_literal_bool() {
+        let input = Some("test");
+        assert!(input.is_none_or(|_| true));
+    }
 }
